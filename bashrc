@@ -134,10 +134,16 @@ gmm() { # git merge $main
 # -- Prompt logic
 
 # change the prompt colors to a theme
-# there are 116 possible themes - themes are 0-115
+# there are 106 possible themes - themes are 0-105
 prompt-set-theme() {
 	local theme=${1:-0}
-	local j=0
+	local i j=0
+
+	if ((theme < 0 || theme > 105)); then
+		printf 'prompt-set-theme: theme must be between 0 and 105\n' >&2
+		return 2
+	fi
+
 	for ((i = theme; i <= 255; i += 30)); do
 		PROMPT_COLORS[j]=$'\e[38;5;'${i}m
 		((j++))
@@ -235,7 +241,7 @@ PROMPT_COMMAND=prompt-update
 PROMPT_DIRTRIM=6
 
 prompt-init
-prompt-set-theme 24
+prompt-set-theme 30
 
 # -- Useful functions
 

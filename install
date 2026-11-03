@@ -46,6 +46,13 @@ for f in "${dotfiles[@]}"; do
 	symlink "$PWD/$f" ~/."$f"
 done
 
+# Link application configs
+mkdir -p ~/.config
+if [[ -d ~/.config/alacritty && ! -L ~/.config/alacritty ]]; then
+	rm -r ~/.config/alacritty
+fi
+symlink "$PWD/alacritty" ~/.config/alacritty
+
 # Setup bics
 if [[ ! -d ~/.bics ]]; then
 	echo 'installing bics'
