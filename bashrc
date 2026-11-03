@@ -304,6 +304,7 @@ colors() {
 # Copy stdin to the clipboard
 copy() {
 	pbcopy 2>/dev/null ||
+	    wl-copy 2>/dev/null ||
 	    xsel 2>/dev/null ||
 	    clip.exe
 
