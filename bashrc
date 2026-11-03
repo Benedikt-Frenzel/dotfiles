@@ -27,7 +27,7 @@ export GREP_COLOR='1;36'
 export LSCOLORS='ExGxbEaECxxEhEhBaDaCaD'
 export MANPAGER='less'
 export PAGER='less'
-export TZ='America/New_York'
+export TZ='Europe/Berlin'
 export VISUAL='vim'
 
 # Support colors in less
@@ -47,6 +47,7 @@ export LESS_TERMCAP_ZW=$'\e[75m'
 
 # PATH
 path_add ~/bin before
+path_add ~/.local/bin before
 
 # Shell Options
 shopt -s cdspell
