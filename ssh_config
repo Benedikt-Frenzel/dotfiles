@@ -1,0 +1,96 @@
+Host *
+	# 1Password SSH agent; only the "geeky" key is enabled for agent use
+	IdentityAgent ~/.1password/agent.sock
+Host floki
+    HostName 10.12.40.102
+    User ben
+
+Host noether
+    HostName 10.200.21.1
+    User ben
+    ProxyJump floki
+
+Host burnell
+    HostName 10.200.22.1
+    User ben
+    ProxyJump floki
+
+Host franklin
+    HostName 149.154.159.86
+    User ben
+    ProxyJump floki
+
+Host hopper
+    HostName 10.200.24.1
+    User ben
+    ProxyJump floki
+
+Host curie
+    HostName 10.200.31.1
+    User ben
+    ProxyJump floki
+
+Host sponer
+    HostName 10.200.32.1
+    User ben
+    ProxyJump floki
+
+Host levi
+    HostName 10.200.33.1
+    User ben
+    ProxyJump floki
+
+Host meitner
+    HostName 10.200.34.1
+    User ben
+    ProxyJump floki
+
+Host leeuwen
+    HostName 10.200.35.1
+    User ben
+    ProxyJump floki
+
+Host ramstedt
+    HostName 10.200.36.1
+    User ben
+    ProxyJump floki
+
+Host herschel
+    HostName 10.200.40.1
+    User ben
+    ProxyJump floki
+
+Host kuchen
+    HostName 10.12.41.100
+    User ben
+    ProxyJump floki
+
+Host carton
+    HostName 10.12.1.10
+    User root
+    ProxyJump floki
+
+Host claus
+    HostName 10.12.40.101
+    User ben
+    ProxyJump floki
+
+Host samwise
+    HostName 10.12.40.100
+    User ben
+    ProxyJump floki
+
+Host urobe
+    HostName 10.12.40.103
+    User ben
+    ProxyJump floki
+
+Host gibson
+    HostName 10.12.40.2
+    User ben
+    ProxyJump floki
+
+Host git.linux.town
+    # HostName git.linux.town
+    HostName 89.163.231.26
+    User git
