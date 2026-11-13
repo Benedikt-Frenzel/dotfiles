@@ -132,6 +132,34 @@ gmm() { # git merge $main
 	git merge "$mb"
 }
 
+# create a bare repo on git.linux.town when missing, then clone it
+# usage: gnew <repo-name> [<local-dir>]
+gnew() { # git new repo
+	local name=${1:?usage: gnew <repo-name> [local-dir]}
+	local dir=${2:-$name}
+	local host=git.linux.town
+	local url err missing='does not appear to be a git repository'
+
+	# strip a trailing .git so both "foo" and "foo.git" work
+	name=${name%.git}
+	if [[ ! $name =~ ^[A-Za-z0-9][A-Za-z0-9._-]*$ ]]; then
+		printf 'gnew: invalid repo name: %s\n' "$name" >&2
+		return 1
+	fi
+	url="git@$host:$name.git"
+
+	# create only when the repo is not already on the host.
+	# any other ls-remote failure is a real error, not "missing".
+	if ! err=$(git ls-remote "$url" 2>&1); then
+		if [[ $err != *"$missing"* ]]; then
+			printf '%s\n' "$err" >&2
+			return 1
+		fi
+		ssh -T "git@$host" "git-init $name" || return 1
+	fi
+	git clone "$url" "$dir"
+}
+
 # -- Prompt logic
 
 # change the prompt colors to a theme
