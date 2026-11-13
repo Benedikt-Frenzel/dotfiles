@@ -1,9 +1,44 @@
 [user]
-	name = Dave Eddy
-	email = dave@daveeddy.com
+	name = Benedikt Frenzel
+	email = git@bfr.sh
+
 [color]
 	ui = auto
+
+[init]
+	defaultBranch = main
+
 [push]
-	default = matching
+	default = simple
+	autoSetupRemote = true
+
 [pull]
-	rebase = false
+	rebase = true
+
+[fetch]
+	prune = true
+
+[rebase]
+	autosquash = true
+	autoStash = true
+
+[merge]
+	conflictStyle = zdiff3
+
+[diff]
+	algorithm = histogram
+
+[rerere]
+	enabled = true
+
+[branch]
+	sort = -committerdate
+
+[tag]
+	sort = -version:refname
+
+[alias]
+	st = status -sb
+	co = checkout
+	br = branch
+	lg = log --oneline --graph --decorate -20
